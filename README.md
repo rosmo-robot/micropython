@@ -34,4 +34,17 @@ Open Thonny and select configure interpreter.
 
 Select MicroPython (ESP32)
 
+# Notes on installing micropython on the esp32-s3 using Ubuntu  
+
+sudo apt install pipx
+
+pipx install esptool
+
+esptool.py --chip esp32s3 --port /dev/ttyACM0 erase_flash
+
+Get the latest .bin file: https://micropython.org/download/ESP32_GENERIC_S3/
+
+Flash the latest bin file:
+esptool.py --chip esp32s3 --port /dev/ttyACM0 write_flash -z 0 [Name of the latest bin file]
+
 
