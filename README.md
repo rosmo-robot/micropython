@@ -36,7 +36,9 @@ Select MicroPython (ESP32)
 
 # Notes on installing micropython on the esp32-s3 using Ubuntu  
 
-sudo apt install pipx
+sudo apt install pipx thonny
+
+pipx ensurepath
 
 pipx install esptool
 
