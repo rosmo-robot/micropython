@@ -42,11 +42,19 @@ pipx ensurepath
 
 pipx install esptool
 
-esptool.py --chip esp32s3 --port /dev/ttyACM0 erase_flash
+Remove the Esp32s3 from the robot and connect to your computer
+
+sudo dmesg | grep tty (note the bit after tty and make the line below match that)
+
+esptool.py --chip esp32s3 --port /dev/ttyUSB0 erase_flash
 
 Get the latest .bin file: https://micropython.org/download/ESP32_GENERIC_S3/
 
+cd /Downloads (or wherever your downloads end up)
+
+ls (to remind yourself what the file is called)
+
 Flash the latest bin file:
-esptool.py --chip esp32s3 --port /dev/ttyACM0 write_flash -z 0 [Name of the latest bin file]
+esptool.py --chip esp32s3 --port /dev/ttyUSB0 write_flash -z 0 [Name of the latest bin file]
 
 
