@@ -44,9 +44,9 @@ def control_action(request):
     elif cmd == "R":
         rosmo.car.turn_right(RosMo_WebInterface.speed)
     elif cmd == "CL":
-        rosmo.car.curve_left(RosMo_WebInterface.speed)
+        rosmo.car.curve_left(RosMo_WebInterface.speed,65)
     elif cmd == "CR":
-        rosmo.car.curve_right(RosMo_WebInterface.speed)
+        rosmo.car.curve_right(RosMo_WebInterface.speed,65)
     elif cmd == "BK":
         rosmo.car.backward(RosMo_WebInterface.speed)
     else:
