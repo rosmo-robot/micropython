@@ -118,6 +118,12 @@ def getCSS():
             color:#FF00FF;
             font-size:20px;
             width: 50px;
+        }  
+ 
+        .speed {
+            color:#FF00FF;
+            font-size:20px;
+            width: 120px;
         }
         .control {
             color:#FF00FF;
@@ -128,6 +134,15 @@ def getCSS():
 def controlTable(dist):
     global interface
     global speed
+    if speed < 0.5:
+        speedstr = "slow"
+    elif speed > 0.5:
+        speedstr = "fast"
+    else:
+        speedstr = "medium"
+    
+    
+    
     if interface == "phone":
         link = "<form action='./PC'><input type='submit' value='PC Interface' /></form>"
     else:
@@ -144,18 +159,22 @@ def controlTable(dist):
         <table><tr><td><form action='./CL'><input type='submit' value='&nwarhk;' class='direction' /></form></td>
           <td><form action='./FW'><input type='submit' value='&uarr;' class='direction' /></form></td>
           <td><form action='./CR'><input type='submit' value='&nearhk;' class='direction' /></form></td>
+          <td><form action='./SS'><input type='submit' value='slow' class='speed' /></form></td>
           </tr><tr>
           <td><form action='./L'><input type='submit' value='&olarr;' class='direction' /></form></td>
           <td><form action='./STP'><input type='submit' value='&excl;' class='direction' /></form></td>
           <td><form action='./R'><input type='submit' value='&orarr;' class='direction' /></form></td>
+          <td><form action='./SM'><input type='submit' value='medium' class='speed' /></form></td>
           </tr><tr>
           <td>&nbsp;</td>
           <td><form action='./BK'><input type='submit' value='&darr;' class='direction' /></form></td>
           <td>&nbsp;</td>
+          <td><form action='./SF'><input type='submit' value='fast' class='speed' /></form></td>
           </tr>
         </table>
       </td>
-      <td align = 'center'>Distance: {dist} cm <br /> Speed: {speed}<form action='./UPD'><input type='submit' value='Refresh' /></form>
+      <td align = 'center'>Distance: {dist} cm (not implemented)<br /><br />
+      Speed: {speedstr}<br /><br /><form action='./UPD'><input type='submit' value='Refresh' /></form>
        </td>
         </tr>
     </table>
