@@ -3,6 +3,8 @@ Micropython code for Rosmo Robot
 
 Very much a work in progress  
 
+The web ui is NOT currently using encoders, because I can only get one encoder to accurately control speed at any given time. WHen I use all 4 the interrupts interact in some way and bollox the encoder readings
+
 
 # Notes on installing micropython on the esp32-s3 using windows  
 
