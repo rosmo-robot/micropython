@@ -1,9 +1,27 @@
 # micropython
 Micropython code for Rosmo Robot
 
-Very much a work in progress  
+<h2>Very much a work in progress </h2>
+
+Quick test:
+copy the lot to your esp32 and then run this
+
+```
+from RosMo import RosMo
+from time import sleep
+
+rosmo = RosMo()
+rosmo.car.forward(0.5)
+sleep(1)
+rosmo.car.stop()
+```
+
+<hr />
 
 The web ui is NOT currently using encoders, because I can only get one encoder to accurately control speed at any given time. When I use all 4 the interrupts interact in some way and bollox the encoder readings
+
+<hr />
+
 
 To try encoder code with one motor  
 
@@ -17,7 +35,10 @@ p1 = PID(m1, 3, 0, 10, 1000)  # PID(Motor object, Propotional, Derivative, Integ
 
 while(1):
   p1.setRPM(180)
-```  
+```
+
+<hr />
+
 
 # Notes on installing micropython on the esp32-s3 using windows  
 
@@ -48,6 +69,9 @@ Open Thonny and select configure interpreter.
 ![6](https://github.com/user-attachments/assets/47f8f673-c79e-44a7-8464-be284b05aeb8)
 
 Select MicroPython (ESP32)
+
+<hr />
+
 
 # Notes on installing micropython on the esp32-s3 using Ubuntu  
 
