@@ -41,6 +41,10 @@ def control_action(request):
         rosmo.car.turn_left(.5)
     elif cmd == "R":
         rosmo.car.turn_right(.5)
+    elif cmd == "CL":
+        rosmo.car.curve_left(.5)
+    elif cmd == "CR":
+        rosmo.car.curve_right(.5)
     elif cmd == "BK":
         rosmo.car.backward(.5)
     else:
@@ -78,6 +82,8 @@ server.add_route("/FW", control_action)
 server.add_route("/BK", control_action)
 server.add_route("/L", control_action)
 server.add_route("/R", control_action)
+server.add_route("/CL", control_action)
+server.add_route("/CR", control_action)
 server.add_route("/PH", setPhone)
 server.add_route("/PC", setPC)
 
