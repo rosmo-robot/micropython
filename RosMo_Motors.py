@@ -14,8 +14,8 @@ class DCMotor:
             spd = -1
         if spd > 1:
             spd = 1
-        duty_cycle = int(0xFFFF * abs(value))
-        if spd > 0
+        duty_cycle = int(0xFFFF * abs(spd))
+        if spd > 0:
             self.fwd_pwm.duty_u16(duty_cycle) 
             self.bwd_pwm.duty_u16(0)
         else:
