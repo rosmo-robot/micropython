@@ -6,7 +6,7 @@ from time import sleep
 from machine import Timer
 import RosMo_WebInterface
 
-
+lastCtrlCmd = "/STP"
 def webpage():
     dist = "?"#str(int(rosmo.getDistanceCm()))
     #Template HTML
@@ -31,22 +31,24 @@ def show_index(request):
     server.send(html)
 
 def control_action(request):
+    global lastCtrlCmd
+    lastCtrlCmd = request
     parts = request.split('/')
     cmd = parts[1].split('?')[0]
     if cmd == "STP":
         rosmo.car.stop()
     elif cmd == "FW":
-        rosmo.car.forward(.5)
+        rosmo.car.forward(RosMo_WebInterface.speed)
     elif cmd == "L":
-        rosmo.car.turn_left(.5)
+        rosmo.car.turn_left(RosMo_WebInterface.speed)
     elif cmd == "R":
-        rosmo.car.turn_right(.5)
+        rosmo.car.turn_right(RosMo_WebInterface.speed)
     elif cmd == "CL":
-        rosmo.car.curve_left(.5)
+        rosmo.car.curve_left(RosMo_WebInterface.speed)
     elif cmd == "CR":
-        rosmo.car.curve_right(.5)
+        rosmo.car.curve_right(RosMo_WebInterface.speed)
     elif cmd == "BK":
-        rosmo.car.backward(.5)
+        rosmo.car.backward(RosMo_WebInterface.speed)
     else:
         rosmo.car.stop()
     
@@ -56,6 +58,17 @@ def control_action(request):
     server.send(html)
 
 
+def setSpeed(request):
+    global lastCtrlCmd
+    parts = request.split('/')
+    cmd = parts[1].split('?')[0]
+    if cmd == "SS":
+        RosMo_WebInterface.speed = 0.2
+    elif cmd == "SF":
+        RosMo_WebInterface.speed = 1
+    else:
+        RosMo_WebInterface.speed = 0.5
+    control_action(lastCtrlCmd) #re apply last control action with new speed
     
 def setPhone(request):
     RosMo_WebInterface.interface = "phone"
@@ -84,6 +97,9 @@ server.add_route("/L", control_action)
 server.add_route("/R", control_action)
 server.add_route("/CL", control_action)
 server.add_route("/CR", control_action)
+server.add_route("/SS", setSpeed)
+server.add_route("/SM", setSpeed)
+server.add_route("/SF", setSpeed)
 server.add_route("/PH", setPhone)
 server.add_route("/PC", setPC)
 
