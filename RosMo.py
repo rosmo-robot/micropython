@@ -1,5 +1,6 @@
 from RosMo_4wd import RosMo4WD
 import utime
+from machine import Pin, time_pulse_us
 
 class RosMo:
     def __init__(self):
