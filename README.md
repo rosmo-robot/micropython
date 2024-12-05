@@ -20,6 +20,18 @@ rosmo.car.stop()
 
 The web ui is NOT currently using encoders, because I can only get one encoder to accurately control speed at any given time. When I use all 4 the interrupts interact in some way and bollox the encoder readings
 
+To try the webserver, copy everything to the esp32.  
+
+Edit secrets.py to give your wifi details.  
+
+run RosMo_WebServer.py - if you run it in Thonny you can get the ip for the web page.  
+
+<img width="247" alt="7" src="https://github.com/user-attachments/assets/b50bc8ee-aada-4555-8fed-d98f8dd59bd9">
+
+going to that ip in your browser should show the control page
+
+<img width="459" alt="8" src="https://github.com/user-attachments/assets/ae738260-2ba2-4785-bfae-1b803055faa1">
+
 <hr />
 
 
