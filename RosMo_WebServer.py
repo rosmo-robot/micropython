@@ -51,12 +51,9 @@ def control_action(request):
         rosmo.car.backward(RosMo_WebInterface.speed)
     else:
         rosmo.car.stop()
-    
-    
-    
+        
     html = webpage()
     server.send(html)
-
 
 def setSpeed(request):
     global lastCtrlCmd
