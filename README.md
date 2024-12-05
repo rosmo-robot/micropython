@@ -3,7 +3,7 @@ Micropython code for Rosmo Robot
 
 <h2>Very much a work in progress </h2>
 
-Quick test:
+Quick test:  
 copy the lot to your esp32 and then run this
 
 ```
@@ -17,6 +17,8 @@ rosmo.car.stop()
 ```
 
 <hr />
+
+# Web UI
 
 The web ui is NOT currently using encoders, because I can only get one encoder to accurately control speed at any given time. When I use all 4 the interrupts interact in some way and bollox the encoder readings
 
@@ -34,6 +36,7 @@ going to that ip in your browser should show the control page
 
 <hr />
 
+# Encoder  
 
 To try encoder code with one motor  
 
@@ -51,6 +54,29 @@ while(1):
 
 <hr />
 
+# Ultrasonic HR-S04 sensor
+
+There is code for an ultrasonic sensor in RosMo.py.  
+Below is rudimentary obstacle avoidance code with the sensor using pins 13 and 11
+```
+from RosMo import RosMo
+from time import sleep
+rosmo = RosMo()
+rosmo.addUltrasonic(13,11)
+
+while True:
+    d = (rosmo.getDistanceCm() + rosmo.getDistanceCm() + rosmo.getDistanceCm() + rosmo.getDistanceCm() )/4
+    print(d)
+    if d < 10:
+        rosmo.car.backward(0.4)
+        sleep(0.2)
+        rosmo.car.turn_right(0.8)
+        sleep(0.4)
+    else:
+        rosmo.car.forward(0.6)
+        sleep(0.5)
+```
+<hr />
 
 # Notes on installing micropython on the esp32-s3 using windows  
 
