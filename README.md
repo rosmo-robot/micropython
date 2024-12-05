@@ -3,8 +3,21 @@ Micropython code for Rosmo Robot
 
 Very much a work in progress  
 
-The web ui is NOT currently using encoders, because I can only get one encoder to accurately control speed at any given time. WHen I use all 4 the interrupts interact in some way and bollox the encoder readings
+The web ui is NOT currently using encoders, because I can only get one encoder to accurately control speed at any given time. When I use all 4 the interrupts interact in some way and bollox the encoder readings
 
+To try encoder code with one motor  
+
+```
+from RosMo_N20enc import EncodedMotor, PID
+# Create a motor object
+m1 = EncodedMotor(21, 39, False, 14, 9)  # Motor(fwd pin, bkwd pin, Reversed, encA, encB, frequency) Default frequency is set at 50Hz
+
+# Create a PID object  with desired PID values
+p1 = PID(m1, 3, 0, 10, 1000)  # PID(Motor object, Propotional, Derivative, Integral, Max correction speed)
+
+while(1):
+  p1.setRPM(180)
+```  
 
 # Notes on installing micropython on the esp32-s3 using windows  
 
