@@ -36,6 +36,10 @@ going to that ip in your browser should show the control page
 
 <hr />
 
+# Autostart
+
+If you would like RosMo_WebServer.py to start every time the robot is powered up then copy it to main.py
+
 # Encoder  
 
 To try encoder code with one motor  
