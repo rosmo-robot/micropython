@@ -82,6 +82,10 @@ while True:
 ```
 <hr />
 
+# More sensors
+
+[Laser sensors & more ](https://github.com/mcauser/awesome-micropython?tab=readme-ov-file#distance-laser)
+
 # Notes on installing micropython on the esp32-s3 using windows  
 
 Open a cmd window and install esptool.  In this example it was already installed  
